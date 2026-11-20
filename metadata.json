@@ -1,0 +1,6 @@
+{
+  "name": "Núcleo - Hardware & PC Builder",
+  "description": "Portal moderno de noticias, análisis de hardware de PC y configurador para armar tu PC con precios de referencia aproximados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

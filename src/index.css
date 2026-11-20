@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  
+  html {
+    font-family: var(--font-sans);
+  }
+}
+
+:root {
+  --nucleo-accent: #ef4444;
+  --nucleo-grid-rgba: rgba(239, 68, 68, 0.045);
+  --nucleo-glow-rgba: rgba(239, 68, 68, 0.25);
+}
+
+html[data-accent='cyberpunk'] {
+  --nucleo-accent: #06b6d4;
+  --nucleo-grid-rgba: rgba(6, 182, 212, 0.06);
+  --nucleo-glow-rgba: rgba(6, 182, 212, 0.28);
+}
+
+html[data-accent='stealth'] {
+  --nucleo-accent: #64748b;
+  --nucleo-grid-rgba: rgba(148, 163, 184, 0.045);
+  --nucleo-glow-rgba: rgba(100, 116, 139, 0.25);
+}
+
+html[data-accent='white'] {
+  --nucleo-accent: #e2e8f0;
+  --nucleo-grid-rgba: rgba(248, 250, 252, 0.055);
+  --nucleo-glow-rgba: rgba(248, 250, 252, 0.2);
+}
+
+html[data-accent='emerald'] {
+  --nucleo-accent: #10b981;
+  --nucleo-grid-rgba: rgba(16, 185, 129, 0.055);
+  --nucleo-glow-rgba: rgba(16, 185, 129, 0.28);
+}
+
+/* Custom smooth transitions for interactive cards and subtle tech grid with dynamic accent glow */
+.tech-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--nucleo-grid-rgba) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nucleo-grid-rgba) 1px, transparent 1px);
+}
+
+.tech-grid-pattern-light {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(220, 38, 38, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
+}
+
+.red-glow {
+  box-shadow: 0 0 25px -5px var(--nucleo-glow-rgba);
+}
+
+/* =========================================================================
+   LOW POWER MODE (Modo de Bajo Consumo / Battery Saver)
+   Disables heavy animations, GPU backdrop blurs, and intense glow filters.
+   ========================================================================= */
+html.low-power-mode *,
+html.low-power-mode *::before,
+html.low-power-mode *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.low-power-mode .animate-pulse,
+html.low-power-mode .animate-bounce,
+html.low-power-mode .animate-spin,
+html.low-power-mode .animate-ping {
+  animation: none !important;
+}
+
+html.low-power-mode [class*="backdrop-blur"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.low-power-mode [class*="shadow-2xl"],
+html.low-power-mode [class*="shadow-xl"],
+html.low-power-mode [class*="shadow-lg"] {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+html.low-power-mode .red-glow {
+  box-shadow: none !important;
+}
+
